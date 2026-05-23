@@ -58,7 +58,9 @@ const Login = () => {
         <h1 className="text-3xl font-bold mb-6 text-center">
           CRM Login
         </h1>
-        <h6 className="text-3xl font-bold mb-6 text-center">User Name : sai@gmail.com password: 123456</h6>
+        <p className="text-sm text-gray-600 text-center mb-4">
+        Demo Login → Email: demo@gmail.com | Password: 123456
+        </p>
         <form
           onSubmit={handleSubmit}
           className="space-y-5"
