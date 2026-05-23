@@ -146,7 +146,7 @@ npm install
 ```env
 PORT=5000
 
-MONGO_URI=your_mongodb_atlas_uri
+MONGO_URI=mongodb+srv://admin:Admin123@crm-cluster.yp1sv1d.mongodb.net/crmDB?retryWrites=true&w=majority&appName=crm-cluster
 
 JWT_SECRET=mysecretkey
 ```
@@ -188,7 +188,7 @@ npm run dev
 ```env
 PORT=5000
 
-MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/crmDB?retryWrites=true&w=majority
+MONGO_URI=mongodb+srv://admin:Admin123@cluster.mongodb.net/crmDB?retryWrites=true&w=majority
 
 JWT_SECRET=mysecretkey
 ```
