@@ -10,23 +10,24 @@ const CreateLead = () => {
 
   const navigate = useNavigate();
 
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] =
+    useState([]);
 
-  const [formData, setFormData] = useState({
-    name: "",
-    company: "",
-    email: "",
-    phone: "",
-    industry: "",
-    source: "",
-    status: "New",
-    notes: "",
-    expectedRevenue: "",
-    assignedTo: "",
-    followUpDate: "",
-    priority: "Medium",
-
-  });
+  const [formData, setFormData] =
+    useState({
+      name: "",
+      company: "",
+      email: "",
+      phone: "",
+      industry: "",
+      source: "",
+      status: "New",
+      notes: "",
+      expectedRevenue: "",
+      assignedTo: "",
+      followUpDate: "",
+      priority: "Medium",
+    });
 
   // =========================
   // Fetch Users
@@ -36,16 +37,19 @@ const CreateLead = () => {
 
     try {
 
-      const token = localStorage.getItem("token");
+      const token =
+        localStorage.getItem("token");
 
-      const response = await API.get(
-        "/users",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response =
+        await API.get(
+          "/users",
+          {
+            headers: {
+              Authorization:
+                `Bearer ${token}`,
+            },
+          }
+        );
 
       setUsers(response.data);
 
@@ -57,7 +61,9 @@ const CreateLead = () => {
   };
 
   useEffect(() => {
+
     fetchUsers();
+
   }, []);
 
   // =========================
@@ -68,7 +74,8 @@ const CreateLead = () => {
 
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [e.target.name]:
+        e.target.value,
     });
   };
 
@@ -76,20 +83,24 @@ const CreateLead = () => {
   // Submit Form
   // =========================
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (
+    e
+  ) => {
 
     e.preventDefault();
 
     try {
 
-      const token = localStorage.getItem("token");
+      const token =
+        localStorage.getItem("token");
 
       await API.post(
         "/leads",
         formData,
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization:
+              `Bearer ${token}`,
           },
         }
       );
@@ -112,13 +123,13 @@ const CreateLead = () => {
 
   return (
 
-    <div>
+    <div className="max-w-4xl">
 
-      {/* Title */}
+      {/* Header */}
 
-      <div className="mb-6">
+      <div className="mb-8">
 
-        <h1 className="text-3xl font-bold">
+        <h1 className="text-4xl font-bold">
           Create Lead
         </h1>
 
@@ -130,7 +141,7 @@ const CreateLead = () => {
 
       {/* Form */}
 
-      <div className="bg-white p-8 rounded-xl shadow max-w-3xl">
+      <div className="bg-white p-8 rounded-2xl shadow-lg">
 
         <form
           onSubmit={handleSubmit}
@@ -145,7 +156,15 @@ const CreateLead = () => {
             placeholder="Lead Name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full border p-3 rounded"
+            className="
+              w-full
+              border
+              p-4
+              rounded-xl
+              outline-none
+              focus:ring-2
+              focus:ring-blue-500
+            "
             required
           />
 
@@ -157,7 +176,15 @@ const CreateLead = () => {
             placeholder="Company"
             value={formData.company}
             onChange={handleChange}
-            className="w-full border p-3 rounded"
+            className="
+              w-full
+              border
+              p-4
+              rounded-xl
+              outline-none
+              focus:ring-2
+              focus:ring-blue-500
+            "
             required
           />
 
@@ -169,7 +196,15 @@ const CreateLead = () => {
             placeholder="Email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full border p-3 rounded"
+            className="
+              w-full
+              border
+              p-4
+              rounded-xl
+              outline-none
+              focus:ring-2
+              focus:ring-blue-500
+            "
           />
 
           {/* Phone */}
@@ -180,7 +215,15 @@ const CreateLead = () => {
             placeholder="Phone"
             value={formData.phone}
             onChange={handleChange}
-            className="w-full border p-3 rounded"
+            className="
+              w-full
+              border
+              p-4
+              rounded-xl
+              outline-none
+              focus:ring-2
+              focus:ring-blue-500
+            "
           />
 
           {/* Industry */}
@@ -191,7 +234,15 @@ const CreateLead = () => {
             placeholder="Industry"
             value={formData.industry}
             onChange={handleChange}
-            className="w-full border p-3 rounded"
+            className="
+              w-full
+              border
+              p-4
+              rounded-xl
+              outline-none
+              focus:ring-2
+              focus:ring-blue-500
+            "
           />
 
           {/* Source */}
@@ -202,57 +253,147 @@ const CreateLead = () => {
             placeholder="Lead Source"
             value={formData.source}
             onChange={handleChange}
-            className="w-full border p-3 rounded"
+            className="
+              w-full
+              border
+              p-4
+              rounded-xl
+              outline-none
+              focus:ring-2
+              focus:ring-blue-500
+            "
           />
-          {/* Status */}
-          <input
-            type="datetime-local"
-            name="followUpDate"
-            value={formData.followUpDate}
-            onChange={handleChange}
-            className="w-full border p-3 rounded"
-          />
+
+          {/* Follow Up Date */}
+
+          <div>
+
+            <label className="block mb-2 font-semibold">
+
+              Follow Up Date
+
+            </label>
+
+            <input
+              type="datetime-local"
+              name="followUpDate"
+              value={
+                formData.followUpDate
+              }
+              onChange={handleChange}
+              className="
+                w-full
+                border
+                p-4
+                rounded-xl
+                outline-none
+                focus:ring-2
+                focus:ring-blue-500
+              "
+            />
+
+          </div>
+
           {/* Revenue */}
 
           <input
             type="number"
             name="expectedRevenue"
             placeholder="Expected Revenue"
-            value={formData.expectedRevenue}
+            value={
+              formData.expectedRevenue
+            }
             onChange={handleChange}
-            className="w-full border p-3 rounded"
+            className="
+              w-full
+              border
+              p-4
+              rounded-xl
+              outline-none
+              focus:ring-2
+              focus:ring-blue-500
+            "
           />
 
           {/* Assign Employee */}
 
-          <select
-            name="assignedTo"
-            value={formData.assignedTo}
-            onChange={handleChange}
-            className="w-full border p-3 rounded"
-          >
+          <div>
 
-            <option value="">
-              Select Employee
-            </option>
+            <label className="block mb-2 font-semibold">
 
-            {users.map((user) => (
+              Assign Employee
 
-              <option
-                key={user._id}
-                value={user._id}
-              >
-                {user.name}
+            </label>
+
+            <select
+              name="assignedTo"
+              value={
+                formData.assignedTo
+              }
+              onChange={handleChange}
+              className="
+                w-full
+                border
+                p-4
+                rounded-xl
+                outline-none
+                focus:ring-2
+                focus:ring-blue-500
+              "
+            >
+
+              <option value="">
+                Select Employee
               </option>
 
-            ))}
+              {users
+                .filter(
+                  (user) =>
+                    user.role ===
+                    "employee"
+                )
+                .map((user) => (
 
-          </select>
-          <select
+                  <option
+                    key={user._id}
+                    value={user._id}
+                  >
+
+                    {user.name}
+
+                  </option>
+
+                ))}
+
+            </select>
+
+          </div>
+
+          {/* Priority */}
+
+          <div>
+
+            <label className="block mb-2 font-semibold">
+
+              Priority
+
+            </label>
+
+            <select
               name="priority"
-              value={formData.priority}
+              value={
+                formData.priority
+              }
               onChange={handleChange}
-              className="w-full border p-3 rounded"
+              className="
+                w-full
+                border
+                p-4
+                rounded-xl
+                outline-none
+                focus:ring-2
+                focus:ring-blue-500
+              "
             >
 
               <option value="High">
@@ -268,13 +409,9 @@ const CreateLead = () => {
               </option>
 
             </select>
-            <input
-            type="date"
-            name="followUpDate"
-            value={formData.followUpDate}
-            onChange={handleChange}
-            className="w-full border p-3 rounded"
-          />
+
+          </div>
+
           {/* Notes */}
 
           <textarea
@@ -282,14 +419,32 @@ const CreateLead = () => {
             placeholder="Notes"
             value={formData.notes}
             onChange={handleChange}
-            className="w-full border p-3 rounded h-32"
+            className="
+              w-full
+              border
+              p-4
+              rounded-xl
+              h-32
+              outline-none
+              focus:ring-2
+              focus:ring-blue-500
+            "
           />
 
           {/* Submit */}
 
           <button
             type="submit"
-            className="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition"
+            className="
+              bg-blue-600
+              hover:bg-blue-700
+              transition
+              text-white
+              px-8
+              py-4
+              rounded-xl
+              font-semibold
+            "
           >
 
             Create Lead
