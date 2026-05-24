@@ -92,7 +92,9 @@ const Login = () => {
       Password: 123456
     </p>
   </div>
-
+  <div className="bg-green-50 border border-green-200 rounded-md p-3 text-xs text-green-800 leading-relaxed">
+    visit https://manufacturing-crm-system.vercel.app/register for registering as employee
+  </div>
   <div className="bg-yellow-50 border border-yellow-200 rounded-md p-3 text-xs text-yellow-800 leading-relaxed">
     "Please wait up to one minute after clicking the link for the server to wake up, as the backend is hosted on Render's free tier. Thank you for your patience and cooperation."
   </div>
