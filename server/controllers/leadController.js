@@ -15,7 +15,7 @@ export const createLead = async (
       
       ...req.body,
 
-      assignedTo: req.user._id,
+      assignedTo: req.body.assignedTo,
 
       activities: [
         {
