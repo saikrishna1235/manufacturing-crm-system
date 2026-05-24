@@ -65,18 +65,11 @@ const server = app.listen(
 // ============================
 
 const io = new Server(server, {
-
   cors: {
-
     origin:
-      "http://localhost:5173",
-
-    methods: [
-      "GET",
-      "POST",
-      "PUT",
-      "DELETE",
-    ],
+      "https://manufacturing-crm-system.vercel.app",
+    methods: ["GET", "POST"],
+    credentials: true,
   },
 });
 
