@@ -1,76 +1,96 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import API from "../services/api";
 
+import { useNavigate } from "react-router-dom";
+
 import toast from "react-hot-toast";
 
-const Login = () => {
+const Register = () => {
 
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
+    name: "",
     email: "",
     password: "",
+    role: "employee",
   });
 
+  // =========================
   // Handle Change
+  // =========================
+
   const handleChange = (e) => {
+
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  // Handle Login
+  // =========================
+  // Submit
+  // =========================
+
   const handleSubmit = async (e) => {
+
     e.preventDefault();
 
     try {
 
-      const response = await API.post(
-        "/auth/login",
+      await API.post(
+        "/auth/register",
         formData
       );
 
-      localStorage.setItem(
-        "token",
-        response.data.token
+      toast.success(
+        "Registration successful"
       );
 
-      localStorage.setItem(
-        "user",
-        JSON.stringify(response.data)
-      );
-
-      toast.success("Login successful");
-
-      navigate("/");
+      navigate("/login");
 
     } catch (error) {
+
       console.log(error);
 
-      toast.error("Invalid credentials");
+      toast.error(
+        "Registration failed"
+      );
     }
   };
 
   return (
+
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
 
-      <div className="bg-white p-8 rounded-xl shadow-lg w-[400px]">
+      <div className="bg-white p-8 rounded-xl shadow w-full max-w-md">
 
         <h1 className="text-3xl font-bold mb-6 text-center">
-          CRM Login
+
+          Register
+
         </h1>
-        <p className="text-sm text-gray-600 text-center mb-4">
-        Demo Login → Email: sai@gmail.com | Password: 123456
-        </p>
+
         <form
           onSubmit={handleSubmit}
-          className="space-y-5"
+          className="space-y-4"
         >
 
+          {/* Name */}
+
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            value={formData.name}
+            onChange={handleChange}
+            className="w-full border p-3 rounded"
+            required
+          />
+
           {/* Email */}
+
           <input
             type="email"
             name="email"
@@ -78,9 +98,11 @@ const Login = () => {
             value={formData.email}
             onChange={handleChange}
             className="w-full border p-3 rounded"
+            required
           />
 
           {/* Password */}
+
           <input
             type="password"
             name="password"
@@ -88,14 +110,37 @@ const Login = () => {
             value={formData.password}
             onChange={handleChange}
             className="w-full border p-3 rounded"
+            required
           />
 
-          {/* Button */}
+          {/* Role */}
+
+          <select
+            name="role"
+            value={formData.role}
+            onChange={handleChange}
+            className="w-full border p-3 rounded"
+          >
+
+            <option value="employee">
+            Employee
+            </option>
+
+            <option value="admin">
+            Admin
+            </option>
+
+          </select>
+
+          {/* Submit */}
+
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-3 rounded"
+            className="w-full bg-blue-600 text-white py-3 rounded hover:bg-blue-700 transition"
           >
-            Login
+
+            Register
+
           </button>
 
         </form>
@@ -106,4 +151,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

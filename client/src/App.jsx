@@ -12,6 +12,13 @@ import CreateLead from "./pages/CreateLead";
 import Login from "./pages/Login";
 import EditLead from "./pages/EditLead";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Pipeline from "./pages/Pipeline";
+import Register from "./pages/Register";
+import Users from "./pages/Users";
+import Analytics from "./pages/Analytics";
+import Reminders from "./pages/Reminders";
+import EmployeePerformance
+from "./pages/EmployeePerformance";
 function App() {
   return (
     <BrowserRouter>
@@ -22,7 +29,10 @@ function App() {
           path="/login"
           element={<Login />}
         />
-
+        <Route
+            path="/register"
+            element={<Register />}
+          />
         {/* Main Layout */}
         <Route
             path="/"
@@ -47,6 +57,25 @@ function App() {
             path="edit-lead/:id"
             element={<EditLead />}
             />
+            <Route path="/pipeline" element={<Pipeline />} />
+            <Route
+              path="/users"
+              element={<Users />}
+            />
+            <Route
+              path="/analytics"
+              element={<Analytics />}
+            />
+            <Route
+            path="/reminders"
+            element={<Reminders />}
+          />
+          <Route
+            path="/performance"
+            element={
+              <EmployeePerformance />
+            }
+          />
         </Route>
 
       </Routes>
