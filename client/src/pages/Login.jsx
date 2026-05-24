@@ -63,7 +63,13 @@ const Login = () => {
           CRM Login
         </h1>
         <p className="text-sm text-gray-600 text-center mb-4">
-        Demo Login → Email: saikrishnakoyyada37@gmail.com | Password: 123456
+        Demo admin Login → Email: saikrishnakoyyada37@gmail.com | Password: 123456
+        </p>
+        <p>
+        Demo employee Login → Email: admin@gmail.com | Password: 123456
+        </p>
+        <p>
+          visit this to register:https://manufacturing-crm-system.vercel.app/register 
         </p>
         <form
           onSubmit={handleSubmit}
