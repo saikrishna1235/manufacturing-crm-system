@@ -59,7 +59,7 @@ const Login = () => {
           CRM Login
         </h1>
         <p className="text-sm text-gray-600 text-center mb-4">
-        Demo Login → Email: sai@gmail.com | Password: 123456
+        Demo Login → Email: saikrishnakoyyada37@gmail.com | Password: 123456
         </p>
         <form
           onSubmit={handleSubmit}
