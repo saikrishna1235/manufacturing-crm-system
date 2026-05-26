@@ -1,17 +1,20 @@
-# Manufacturing CRM System
+# 🚀 Manufacturing CRM System
 
-A full-stack Manufacturing CRM (Customer Relationship Management) system built using the MERN Stack (MongoDB, Express.js, React.js, Node.js).
+A production-ready full-stack CRM (Customer Relationship Management) platform built for manufacturing businesses using the MERN Stack.
 
-This project helps manufacturing businesses manage:
+This CRM helps organizations manage:
+
 - Leads
-- Sales pipeline
-- Customer workflows
-- Revenue tracking
-- Business analytics
+- Sales Pipelines
+- Employee Workflows
+- Revenue Analytics
+- Follow-up Reminders
+- Team Management
+- Business Insights
 
 ---
 
-# 🚀 Live Demo
+# 🌐 Live Demo
 
 ## Frontend (Vercel)
 
@@ -23,29 +26,53 @@ https://crm-backend-2rkm.onrender.com
 
 ---
 
-# 📌 Features
+# ✨ Advanced Features
 
-## Authentication
+## 🔐 Authentication & Authorization
+
 - JWT Authentication
 - Protected Routes
-- Secure Login System
+- Role-Based Access Control
+- Admin & Employee Dashboards
 - Session Management
 
-## Dashboard
+---
+
+## 👨‍💼 Admin Features
+
+- Create & Assign Leads
+- Manage Employees
+- Team Management
+- Track Employee Performance
+- View Company Analytics
+- Revenue Monitoring
+- Pipeline Management
+
+---
+
+## 👨‍💻 Employee Features
+
+- View Assigned Leads Only
+- Update Lead Status
+- Manage Follow-Ups
+- Track Pipeline Progress
+- Activity Timeline
+
+---
+
+## 📊 Analytics Dashboard
+
 - Total Leads Analytics
-- Qualified Leads Tracking
-- Closed Deals Analytics
-- Revenue Statistics
-- Real-Time Charts
+- Revenue Tracking
+- Lead Status Analytics
+- Pipeline Insights
+- Employee Performance Charts
+- Real-Time Data Visualization
 
-## Lead Management
-- Create Lead
-- Edit Lead
-- Delete Lead
-- Search Leads
-- Filter Leads by Status
+---
 
-## CRM Lead Pipeline
+## 📌 CRM Pipeline
+
 - New
 - Contacted
 - Qualified
@@ -54,34 +81,76 @@ https://crm-backend-2rkm.onrender.com
 - Closed Won
 - Closed Lost
 
-## UI Features
-- Responsive Dashboard
-- Professional Sidebar
+---
+
+## 📅 Reminder System
+
+- Follow-Up Reminders
+- Upcoming Client Tracking
+- Overdue Follow-Ups
+- Priority Management
+
+---
+
+## 📄 Professional PDF Quotations
+
+- Industry-Level PDF Design
+- Company Branding
+- Revenue Calculations
+- Client Quotation Export
+
+---
+
+## ⚡ Real-Time Features
+
+- Socket.IO Integration
+- Real-Time Lead Updates
+- Instant Pipeline Sync
+
+---
+
+## 🎨 UI/UX Features
+
+- Fully Responsive Design
+- Mobile Friendly
+- Professional SaaS UI
+- Modern Dashboard
+- Responsive Pipeline Board
 - Toast Notifications
-- Charts & Analytics
-- Modern SaaS UI
 
 ---
 
 # 🛠️ Tech Stack
 
 ## Frontend
+
 - React.js
 - Vite
 - Tailwind CSS
 - React Router DOM
 - Axios
 - Recharts
+- DnD Kit
+- React Hot Toast
+- Socket.IO Client
+
+---
 
 ## Backend
+
 - Node.js
 - Express.js
-- MongoDB
+- MongoDB Atlas
 - Mongoose
 - JWT Authentication
 - bcryptjs
+- Socket.IO
+- Nodemailer
+
+---
 
 ## Deployment
+
 - Vercel
 - Render
 - MongoDB Atlas
@@ -99,6 +168,7 @@ manufacturing-crm-system/
 │   │   ├── layouts/
 │   │   ├── pages/
 │   │   ├── services/
+│   │   ├── utils/
 │   │   └── App.jsx
 │   │
 │   └── package.json
@@ -109,8 +179,10 @@ manufacturing-crm-system/
 │   ├── middleware/
 │   ├── models/
 │   ├── routes/
-│   ├── server.js
-│   └── package.json
+│   ├── utils/
+│   ├── socket/
+│   │
+│   └── server.js
 │
 └── README.md
 ```
@@ -129,13 +201,13 @@ git clone https://github.com/saikrishna1235/manufacturing-crm-system.git
 
 # 🔹 Backend Setup
 
-## Navigate to server
+## Navigate to Backend
 
 ```bash
 cd server
 ```
 
-## Install dependencies
+## Install Dependencies
 
 ```bash
 npm install
@@ -145,13 +217,13 @@ npm install
 
 ```env
 PORT=5000
-
+EMAIL_USER=saikrishnakoyyada20669@gmail.com
+EMAIL_PASS=hqlknfuipbnwencz
 MONGO_URI=mongodb+srv://admin:Admin123@crm-cluster.yp1sv1d.mongodb.net/crmDB?retryWrites=true&w=majority&appName=crm-cluster
-
 JWT_SECRET=mysecretkey
 ```
 
-## Run backend
+## Run Backend
 
 ```bash
 npm run dev
@@ -161,19 +233,19 @@ npm run dev
 
 # 🔹 Frontend Setup
 
-## Navigate to client
+## Navigate to Frontend
 
 ```bash
 cd client
 ```
 
-## Install dependencies
+## Install Dependencies
 
 ```bash
 npm install
 ```
 
-## Run frontend
+## Run Frontend
 
 ```bash
 npm run dev
@@ -181,23 +253,23 @@ npm run dev
 
 ---
 
-# 🌐 Environment Variables
+# 🌍 Environment Variables
 
 ## Backend `.env`
 
 ```env
 PORT=5000
-
-MONGO_URI=mongodb+srv://admin:Admin123@cluster.mongodb.net/crmDB?retryWrites=true&w=majority
-
+EMAIL_USER=saikrishnakoyyada20669@gmail.com
+EMAIL_PASS=hqlknfuipbnwencz
+MONGO_URI=mongodb+srv://admin:Admin123@crm-cluster.yp1sv1d.mongodb.net/crmDB?retryWrites=true&w=majority&appName=crm-cluster
 JWT_SECRET=mysecretkey
 ```
 
 ---
 
-# 📊 API Endpoints
+# 📡 API Endpoints
 
-## Auth Routes
+## 🔐 Auth Routes
 
 | Method | Endpoint | Description |
 |---|---|---|
@@ -206,45 +278,80 @@ JWT_SECRET=mysecretkey
 
 ---
 
-## Lead Routes
+## 📌 Lead Routes
 
-| Method | Endpoint |
-|---|---|
-| GET | `/api/leads` |
-| POST | `/api/leads` |
-| PUT | `/api/leads/:id` |
-| DELETE | `/api/leads/:id` |
-
----
-
-## Analytics Routes
-
-| Method | Endpoint |
-|---|---|
-| GET | `/api/analytics/summary` |
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/leads` | Get All Leads |
+| POST | `/api/leads` | Create Lead |
+| PUT | `/api/leads/:id` | Update Lead |
+| DELETE | `/api/leads/:id` | Delete Lead |
 
 ---
 
-# 🔒 Authentication
+## 📊 Dashboard Routes
 
-JWT token-based authentication is implemented.
-
-Protected routes require:
-
-```txt
-Authorization: Bearer <token>
-```
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/dashboard/stats` | Dashboard Analytics |
 
 ---
 
-# 📈 Future Improvements
+## 👥 User Routes
 
-- Role-based Access Control
-- Email Notifications
-- PDF Reports
-- Sales Forecasting
-- Real-time Chat
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/users` | Get Employees |
+| POST | `/api/users` | Create Employee |
+
+---
+
+# 🔒 Security Features
+
+- JWT-Based Authentication
+- Password Hashing using bcryptjs
+- Protected API Routes
+- Role-Based Authorization
+- Secure Route Access
+- MongoDB Validation
+
+---
+
+# 📱 Responsive Design
+
+This CRM is fully responsive and optimized for:
+
+- Desktop
+- Tablet
+- Mobile Devices
+
+---
+
+# 🚀 Deployment
+
+## Frontend Deployment
+
+- Vercel
+
+## Backend Deployment
+
+- Render
+
+## Database
+
+- MongoDB Atlas
+
+---
+
+# 📈 Future Enhancements
+
 - AI Lead Prediction
+- WhatsApp Notifications
+- Sales Forecasting
+- CRM Chat System
+- Advanced Reporting
+- Multi-Tenant Support
+- Email Automation
 
 ---
 
@@ -255,14 +362,18 @@ Authorization: Bearer <token>
 GitHub:
 https://github.com/saikrishna1235
 
+LinkedIn:
+https://www.linkedin.com
+
 ---
 
 # ⭐ Support
 
 If you like this project:
+
 - Star the repository
 - Fork the project
-- Share with others
+- Share your feedback
 
 ---
 
